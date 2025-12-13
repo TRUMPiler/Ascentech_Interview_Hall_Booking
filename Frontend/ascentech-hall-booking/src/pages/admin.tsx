@@ -49,22 +49,8 @@ export default function AdminDashboard() {
     }
   };
 
-  const handleUpdate = async (booking: Booking) => {
-    const newHallName = window.prompt("Enter new Hall Name:", booking.hallName);
-    if (newHallName && newHallName !== booking.hallName) {
-      try {
-        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/bookings/${booking.id}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ hallName: newHallName }),
-        });
-        if (res.ok) {
-          setBookings((prev) => prev.map((b) => (b.id === booking.id ? { ...b, hallName: newHallName } : b)));
-        }
-      } catch (error) {
-        console.error("Error updating booking:", error);
-      }
-    }
+  const handleUpdate = (booking: Booking) => {
+    window.location.href = `/update-booking?id=${booking.id}`;
   };
 
   const handleDelete = async (id: number) => {
