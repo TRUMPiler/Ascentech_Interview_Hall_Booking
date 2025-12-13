@@ -15,7 +15,7 @@ type RegistrationFormData = {
   rent: string;
   additionalCharges: string;
   total: string;
-  remarks: string;
+  remark: string;
   receiptNo: string;
   receiptDate: string;
 };
@@ -41,7 +41,7 @@ const Registration=()=> {
       rent: '',
       additionalCharges: '',
       total: '',
-      remarks: '',
+      remark: '',
       receiptNo: '',
       receiptDate: ''
     }
@@ -78,13 +78,13 @@ const Registration=()=> {
   }, [setValue]);
 
   const onSubmit: SubmitHandler<RegistrationFormData> = async (data) => {
-    const { total, remarks, rent, additionalCharges, ...rest } = data;
+    const { total, remark, rent, additionalCharges, ...rest } = data;
     const payload = {
       ...rest,
       rent: Number(rent),
       additionalCharges: Number(additionalCharges),
       totalAmount: Number(total),
-      remark: remarks,
+      remark: remark,
       status: 'Pending'
     };
 
@@ -230,7 +230,7 @@ const Registration=()=> {
         <div>
             <label className="block text-sm mb-1 text-gray-700">Remarks</label>
             <textarea 
-              {...register('remarks')}
+              {...register('remark')}
               rows={3}
               className="w-full p-2 border border-gray-300 rounded resize-none bg-white text-gray-900"
               placeholder="Any additional comments..."

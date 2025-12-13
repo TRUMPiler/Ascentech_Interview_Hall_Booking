@@ -10,6 +10,7 @@ interface Booking {
   mobileNo: string;
   totalAmount: number;
   status: string;
+  remark: string;
 }
 
 const View = () => {
@@ -58,6 +59,7 @@ const View = () => {
               <th className="py-3 px-6 text-left">Start Date</th>
               <th className="py-3 px-6 text-left">End Date</th>
               <th className="py-3 px-6 text-left">Mobile</th>
+              <th className="py-3 px-6 text-left">Remarks</th>
               <th className="py-3 px-6 text-right">Total</th>
               <th className="py-3 px-6 text-center">Status</th>
             </tr>
@@ -70,6 +72,7 @@ const View = () => {
                 <td className="py-3 px-6 text-left">{new Date(booking.startDate).toLocaleDateString()}</td>
                 <td className="py-3 px-6 text-left">{new Date(booking.endDate).toLocaleDateString()}</td>
                 <td className="py-3 px-6 text-left">{booking.mobileNo}</td>
+                <td className="py-3 px-6 text-left">{booking.remark || "-"}</td>
                 <td className="py-3 px-6 text-right">{booking.totalAmount}</td>
                 <td className="py-3 px-6 text-center">
                   <span className="bg-green-100 text-green-700 py-1 px-3 rounded-full text-xs font-medium">

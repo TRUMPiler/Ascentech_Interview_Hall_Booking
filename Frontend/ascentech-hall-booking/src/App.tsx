@@ -7,6 +7,7 @@ import View from './pages/view';
 import Home from './pages/home';
 import AdminDashboard from './pages/admin';
 import Login from './pages/login';
+import UpdateBooking from './pages/update-booking';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/admin' element={<AdminDashboard/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/update-booking' element={<UpdateBooking/>}/>
       </Routes>
     </BrowserRouter>
 

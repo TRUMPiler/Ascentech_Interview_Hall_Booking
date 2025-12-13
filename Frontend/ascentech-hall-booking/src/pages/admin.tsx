@@ -12,8 +12,8 @@ interface Booking {
   purposeOfUse: string;
   rent: string;
   additionalCharges: string;
-  total: string;
-  remarks: string;
+  totalAmount: number;
+  remark: string;
   receiptNo: string;
   receiptDate: string;
   status: 'Pending' | 'Confirmed';
@@ -108,6 +108,7 @@ export default function AdminDashboard() {
                   <td className="p-3">
                     <div className="font-medium">{booking.hallName}</div>
                     <div className="text-xs text-gray-500 truncate max-w-[150px]" title={booking.purposeOfUse}>{booking.purposeOfUse}</div>
+                    <div className="text-xs text-gray-500 truncate max-w-[150px]" title={booking.remark}>{booking.remark}</div>
                   </td>
                   <td className="p-3 text-sm">
                     <div className="whitespace-nowrap">Start: {booking.startDate}</div>
@@ -115,7 +116,7 @@ export default function AdminDashboard() {
                   </td>
                   <td className="p-3 text-sm">
                     <div>Rent: {booking.rent}</div>
-                    <div>Total: {booking.total}</div>
+                    <div>Total: {booking.totalAmount}</div>
                   </td>
                   <td className="p-3 text-sm">
                     <div>#{booking.receiptNo}</div>
