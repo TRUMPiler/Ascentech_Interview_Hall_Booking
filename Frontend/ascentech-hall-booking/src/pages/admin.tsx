@@ -49,6 +49,24 @@ export default function AdminDashboard() {
     }
   };
 
+  const handleUpdate = async (booking: Booking) => {
+    const newHallName = window.prompt("Enter new Hall Name:", booking.hallName);
+    if (newHallName && newHallName !== booking.hallName) {
+      try {
+        const res = await fetch(`${import.meta.env.VITE_API_URL}/api/bookings/${booking.id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ hallName: newHallName }),
+        });
+        if (res.ok) {
+          setBookings((prev) => prev.map((b) => (b.id === booking.id ? { ...b, hallName: newHallName } : b)));
+        }
+      } catch (error) {
+        console.error("Error updating booking:", error);
+      }
+    }
+  };
+
   const handleDelete = async (id: number) => {
     if (window.confirm("Are you sure you want to delete this booking?")) {
       try {
@@ -131,6 +149,12 @@ export default function AdminDashboard() {
                         Grant
                       </button>
                     )}
+                    <button 
+                      onClick={() => handleUpdate(booking)}
+                      className="bg-yellow-500 text-white px-3 py-1 rounded text-sm hover:bg-yellow-600"
+                    >
+                      Update
+                    </button>
                     <button 
                       onClick={() => handleDelete(booking.id)}
                       className="bg-red-600 text-shadow-red-600 px-3 py-1 rounded text-sm hover:bg-red-700"
