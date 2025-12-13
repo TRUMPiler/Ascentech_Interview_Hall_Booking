@@ -34,7 +34,6 @@ export default function UpdateBooking() {
       window.location.href = "/login";
       return;
     }
-
     fetch(`${import.meta.env.VITE_API_URL}/api/halls`)
       .then((res) => res.json())
       .then((data) => setHalls(data))
